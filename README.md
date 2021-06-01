@@ -10,6 +10,8 @@ Download and instal NODEJS version 14.17  from https://nodejs.org/en/
 
 ---------------
 
+Start Behringer in Mackie Control mode (turn power off - push button 2 & power on) 
+
 Run MA2 on PC
 
 ADD user "bcf2000" password "remote"
