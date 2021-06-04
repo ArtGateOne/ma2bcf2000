@@ -1,0 +1,22 @@
+{
+  "name": "ma2bcf2000",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "ma2bcf2000.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "ArtGateOne",
+  "license": "ISC",
+  "dependencies": {
+    "easymidi": "^2.0.5",
+    "websocket": "^1.0.34"
+  }
+}
