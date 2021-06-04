@@ -43,3 +43,26 @@ var client = new W3CWebSocket('ws://localhost:80/');
 
 
 change "localhost" to ip addres. 
+
+
+--------------------
+
+CONTROL SURFACE
+
+
+PRESET LEFT RIGHT - SELECT PAGE 1 - 8
+
+PUSH ENCODER - SELECT PAGE 1 - 8 (LED INDICATOR PAGE ON ENCODERS)
+
+
+
+STORE - faders 1 - 8
+
+LERN - faders 8 - 15
+
+EDIT - faders 16 - 23
+
+EXIT - faders 23 - 30
+
+
+ENCODERS control from left ---- DIM, PAN, TILT, RED, GREEN, BLUE, FOCUS, ZOOM
