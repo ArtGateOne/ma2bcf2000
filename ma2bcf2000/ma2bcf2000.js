@@ -14,6 +14,7 @@ var midi_out = 'BCF2000 1';    //set correct midi out device name
 var session = 0;
 var pageIndex = 0;
 //var pageIndex2 = 0;
+var encodervalue = 0;
 var request = 0;
 var controller = 0;
 //var matrix = [213, 212, 211, 210, 209, 208, 207, 206, 113, 112, 111, 110, 109, 108, 107, 106, 13, 12, 11, 10, 9, 8, 7, 6, 13, 12, 11, 10, 9, 8, 7, 6];
@@ -197,6 +198,26 @@ input.on('noteon', function (msg) {
 });
 
 
+input.on('cc', function (msg) {
+    if (msg.value == 1){ encodervalue = 0.5; }
+    if (msg.value == 2) { encodervalue = 1; }
+    if (msg.value == 3) { encodervalue = 5; }
+    if (msg.value == 4) { encodervalue = 10; }
+    if (msg.value == 65) { encodervalue = -0.5; }
+    if (msg.value == 66) { encodervalue = -1; }
+    if (msg.value == 67) { encodervalue = -5; }
+    if (msg.value == 68) { encodervalue = -10; }
+
+    if (msg.controller == 16){ client.send('{"requestType":"encoder","name":"DIM","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 17){ client.send('{"requestType":"encoder","name":"PAN","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 18){ client.send('{"requestType":"encoder","name":"TILT","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 19){ client.send('{"requestType":"encoder","name":"COLORRGB1","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 20){ client.send('{"requestType":"encoder","name":"COLORRGB2","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 21){ client.send('{"requestType":"encoder","name":"COLORRGB3","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 22){ client.send('{"requestType":"encoder","name":"FOCUS","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 23){ client.send('{"requestType":"encoder","name":"ZOOM","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+});
+
 
 
 
@@ -325,16 +346,16 @@ client.onmessage = function (e) {
 
                         if ((obj.itemGroups[0].items[0][i].i.c) != "#000000") { m = 127; }
                         if (i == 0 && wing == 0 && pageIndex == 0) { m = 127; }
-                        //output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
-
-
-                        /*if (obj.itemGroups[0].items[0][i].isRun) { m = 0; }
-                        else { m = 127; }
-                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });*/
-
-                        if (obj.itemGroups[0].items[0][i].isRun) { m = 1; }
-                        //else { m = 0; }
                         output.send('noteon', { note: j + 24, velocity: m, channel: 0 });
+
+
+                        if (obj.itemGroups[0].items[0][i].isRun) { m = 127; }
+                        else { m = 0; }
+                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
+
+                        /*if (obj.itemGroups[0].items[0][i].isRun) { m = 1; }
+                        //else { m = 0; }
+                        output.send('noteon', { note: j + 24, velocity: m, channel: 0 });*/
                         j++;
                     }
 
@@ -350,15 +371,15 @@ client.onmessage = function (e) {
 
                         m = 0;
                         if ((obj.itemGroups[0].items[1][i].i.c) != "#000000") { m = 127; }
-                        //output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
-
-                        /*if (obj.itemGroups[0].items[1][i].isRun) { m = 0; }
-                        else { m = 127; }
-                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });*/
-
-                        if (obj.itemGroups[0].items[1][i].isRun) { m = 1; }
-                        //else { m = 0; }
                         output.send('noteon', { note: j + 24, velocity: m, channel: 0 });
+
+                        if (obj.itemGroups[0].items[1][i].isRun) { m = 127; }
+                        else { m = 0; }
+                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
+
+                        /*if (obj.itemGroups[0].items[1][i].isRun) { m = 1; }
+                        //else { m = 0; }
+                        output.send('noteon', { note: j + 24, velocity: m, channel: 0 });*/
                         j++;
                     }
                 }
@@ -379,16 +400,16 @@ client.onmessage = function (e) {
 
                         if ((obj.itemGroups[0].items[1][i].i.c) != "#000000") { m = 127; }
                         if (i == 0 && wing == 0 && pageIndex == 0) { m = 127; }
-                        //output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
-
-
-                        /*if (obj.itemGroups[0].items[0][i].isRun) { m = 0; }
-                        else { m = 127; }
-                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });*/
-
-                        if (obj.itemGroups[0].items[1][i].isRun) { m = 1; }
-                        //else { m = 0; }
                         output.send('noteon', { note: j + 24, velocity: m, channel: 0 });
+
+
+                        if (obj.itemGroups[0].items[1][i].isRun) { m = 127; }
+                        else { m = 0; }
+                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
+
+                        /*if (obj.itemGroups[0].items[1][i].isRun) { m = 1; }
+                        //else { m = 0; }
+                        output.send('noteon', { note: j + 24, velocity: m, channel: 0 });*/
                         j++;
                     }
 
@@ -404,15 +425,15 @@ client.onmessage = function (e) {
 
                         m = 0;
                         if ((obj.itemGroups[0].items[2][i].i.c) != "#000000") { m = 127; }
-                        //output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
-
-                        /*if (obj.itemGroups[0].items[1][i].isRun) { m = 0; }
-                        else { m = 127; }
-                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });*/
-
-                        if (obj.itemGroups[0].items[2][i].isRun) { m = 1; }
-                        //else { m = 0; }
                         output.send('noteon', { note: j + 24, velocity: m, channel: 0 });
+
+                        if (obj.itemGroups[0].items[2][i].isRun) { m = 127; }
+                        else { m = 0; }
+                        output.send('noteon', { note: j + 16, velocity: m, channel: 0 });
+
+                        /*if (obj.itemGroups[0].items[2][i].isRun) { m = 1; }
+                        //else { m = 0; }
+                        output.send('noteon', { note: j + 24, velocity: m, channel: 0 });*/
                         j++;
                     }
                 }
