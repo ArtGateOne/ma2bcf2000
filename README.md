@@ -5,7 +5,7 @@ Control grandMA2 use Behringer BCF2000 controller
 
 Download my code and unarchive to C:
 
-Download and instal NODEJS version 14.17  from https://nodejs.org/en/
+Download and instal NODEJS version 14.17  from https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi
 
 
 ---------------
