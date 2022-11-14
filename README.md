@@ -66,3 +66,11 @@ EXIT - faders 23 - 30
 
 
 ENCODERS control from left ---- DIM, PAN, TILT, RED, GREEN, BLUE, FOCUS, ZOOM
+
+
+
+---------------------
+
+!!! Program not work with old ma2onpc
+
+!! Program not work - if any executor have more then 1 row ! (thx Philipp Darpe)
