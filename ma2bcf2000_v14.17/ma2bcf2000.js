@@ -1,12 +1,12 @@
 var easymidi = require('easymidi');
-//ma2bcf2000 by ArtGateOne - version beta 1.0.0
+//ma2bcf2000 by ArtGateOne - version 1.1.0
 
 //-----------------------------------------------------------------
 
 //config 
 var wing = 0;   //set wing 0, 1, 2 or 3
-var midi_in = 'BCF2000 0';     //set correct midi in device name
-var midi_out = 'BCF2000 1';    //set correct midi out device name
+var midi_in = 'BCF2000';     //set correct midi in device name
+var midi_out = 'BCF2000';    //set correct midi out device name
 
 
 //-----------------------------------------------------------------
