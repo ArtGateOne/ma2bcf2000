@@ -1,5 +1,5 @@
 var easymidi = require('easymidi');
-//ma2bcf2000 by ArtGateOne - version 1.1.0
+//ma2bcf2000 by ArtGateOne - version 1.1.2
 
 //-----------------------------------------------------------------
 
@@ -16,6 +16,7 @@ var pageIndex = 0;
 //var pageIndex2 = 0;
 var encodervalue = 0;
 var request = 0;
+var interval_on = 0;
 var controller = 0;
 //var matrix = [213, 212, 211, 210, 209, 208, 207, 206, 113, 112, 111, 110, 109, 108, 107, 106, 13, 12, 11, 10, 9, 8, 7, 6, 13, 12, 11, 10, 9, 8, 7, 6];
 var exec = JSON.parse('{"index":[[0,1,2,3,4,5,6,7],[7,8,9,10,11,12,13,14],[15,16,17,18,19,20,21,22],[22,23,24,25,26,27,28,29]]}');
@@ -300,7 +301,10 @@ client.onmessage = function (e) {
         }
 
         if (obj.responseType == "login" && obj.result == true) {
-            setInterval(interval, 100);//80
+            if (interval_on == 0) {
+                interval_on = 1;
+                setInterval(interval, 100);//80
+            }
             console.log("...LOGGED");
             console.log("SESSION " + session);
         }
