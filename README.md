@@ -16,8 +16,9 @@ Run MA2 on PC
 
 ADD user "bcf2000" password "remote"
 
+Set node.exe as default open tool for .js files and double click on ma2bcf2000.js file
 
-Start my code from CMD line
+or Start my code from CMD line
 
 node ma2bcf2000.js
 
@@ -28,7 +29,7 @@ node ma2bcf2000.js
 Program on start schows all available midi devices MIDI IN & MIDI OUT
 
 
-If You BCF have diferent number (default 0 IN, 1 OUT) U need open ma2bcf2000.js in notepad & change to correct numbers.
+dont set this midi device in ma2 settings
 
 --------------------
 
@@ -65,7 +66,17 @@ EDIT - faders 16 - 23
 EXIT - faders 23 - 30
 
 
-ENCODERS control from left ---- DIM, PAN, TILT, RED, GREEN, BLUE, FOCUS, ZOOM
+ENCODERS CONTROL
+
+1 2 3 4 - on screen encoders
+
+5 PAN
+
+6 TILT
+
+7 FOCUS
+
+8 ZOOM
 
 
 
