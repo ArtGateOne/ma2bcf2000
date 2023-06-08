@@ -1,5 +1,5 @@
 var easymidi = require('easymidi');
-//ma2bcf2000 by ArtGateOne - version 1.1.2
+//ma2bcf2000 by ArtGateOne - version 1.1.8
 
 //-----------------------------------------------------------------
 
@@ -200,21 +200,21 @@ input.on('noteon', function (msg) {
 
 
 input.on('cc', function (msg) {
-    if (msg.value == 1){ encodervalue = 0.5; }
-    if (msg.value == 2) { encodervalue = 1; }
-    if (msg.value == 3) { encodervalue = 5; }
-    if (msg.value == 4) { encodervalue = 10; }
-    if (msg.value == 65) { encodervalue = -0.5; }
-    if (msg.value == 66) { encodervalue = -1; }
-    if (msg.value == 67) { encodervalue = -5; }
-    if (msg.value == 68) { encodervalue = -10; }
+    if (msg.value == 1){ encodervalue = 1; }
+    if (msg.value == 2) { encodervalue = 2; }
+    if (msg.value == 3) { encodervalue = 4; }
+    if (msg.value == 4) { encodervalue = 8; }
+    if (msg.value == 65) { encodervalue = -1; }
+    if (msg.value == 66) { encodervalue = -2; }
+    if (msg.value == 67) { encodervalue = -4; }
+    if (msg.value == 68) { encodervalue = -8; }
 
-    if (msg.controller == 16){ client.send('{"requestType":"encoder","name":"DIM","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
-    else if (msg.controller == 17){ client.send('{"requestType":"encoder","name":"PAN","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
-    else if (msg.controller == 18){ client.send('{"requestType":"encoder","name":"TILT","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
-    else if (msg.controller == 19){ client.send('{"requestType":"encoder","name":"COLORRGB1","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
-    else if (msg.controller == 20){ client.send('{"requestType":"encoder","name":"COLORRGB2","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
-    else if (msg.controller == 21){ client.send('{"requestType":"encoder","name":"COLORRGB3","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    if (msg.controller == 16){ client.send('{"command":LUA "gma.canbus.encoder(0,' + encodervalue + ',pressed)","session":' + session + ',"requestType":"command","maxRequests":0}'); }
+    else if (msg.controller == 17){ client.send('{"command":LUA "gma.canbus.encoder(1,' + encodervalue + ',pressed)","session":' + session + ',"requestType":"command","maxRequests":0}'); }
+    else if (msg.controller == 18){ client.send('{"command":LUA "gma.canbus.encoder(2,' + encodervalue + ',pressed)","session":' + session + ',"requestType":"command","maxRequests":0}'); }
+    else if (msg.controller == 19){ client.send('{"command":LUA "gma.canbus.encoder(3,' + encodervalue + ',pressed)","session":' + session + ',"requestType":"command","maxRequests":0}'); }
+    else if (msg.controller == 20){ client.send('{"requestType":"encoder","name":"PAN","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
+    else if (msg.controller == 21){ client.send('{"requestType":"encoder","name":"TILT","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
     else if (msg.controller == 22){ client.send('{"requestType":"encoder","name":"FOCUS","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
     else if (msg.controller == 23){ client.send('{"requestType":"encoder","name":"ZOOM","value":' + encodervalue + ',"session":' + session + ',"maxRequests":0}'); }
 });
